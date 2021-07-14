@@ -8,7 +8,7 @@
 def can_be_instantiated_and_then_saved
   movie = Movie.new
   movie.title = "This is a title."
-  save(movie)
+  movie.save
 end
 
 def can_be_created_with_a_hash_of_attributes
@@ -20,10 +20,10 @@ def can_be_created_with_a_hash_of_attributes
       lead: "Paul Newman",
       in_theaters: false
   }
-  movie = Movie.new(:attributes)
+  movie = Movie.create(attributes: attributes)
 end
 
-def can_be_created_in_a_block(args = __)
+def can_be_created_in_a_block(args = {title: "Home Alone", release_date: 1990})
   # If no arguments are passed, use default values:
   # title == "Home Alone"
   # release_date == 1990
